@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const TextComponentWrapper = styled.span(
-  ({ fontSize : userFontSize, theme: { space, fontSize } }) => css`
+  ({ fontSize: userFontSize, theme: { space, fontSize } }) => css`
     margin: ${space.base};
     text-align: left;
     padding: ${space.basePlusXs};
@@ -10,9 +10,12 @@ const TextComponentWrapper = styled.span(
   `
 );
 
-const TextComponent = ({ fontSize, children }) => <TextComponentWrapper fontSize={fontSize}>{children}</TextComponentWrapper>;
+const TextComponent = ({ fontSize, children }) => (
+  <TextComponentWrapper fontSize={fontSize}>{children}</TextComponentWrapper>
+);
 
 TextComponent.propTypes = {
+  fontSize: PropTypes.string,
   children: PropTypes.node.isRequired
 };
 
