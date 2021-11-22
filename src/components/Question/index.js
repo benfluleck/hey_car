@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import Answers from '<components>/Answers';
-import Text from '<components>/Text';
+import ChoiceList from '<components>/ChoiceList';
+import TextComponent from '<components>/Text';
 import Button from '<components>/Button';
 
 const QuestionWrapper = styled.div(
@@ -13,28 +13,27 @@ const QuestionWrapper = styled.div(
 
     > button {
       align-self: end;
-      margin-right: ${space.basePlusXs};;
+      margin-right: ${space.basePlusXs};
     }
-
-
   `
 );
 
-const Question = ({ question, answers, groupName }) => (
+const Question = ({ question, answers }) => (
   <QuestionWrapper>
-    <Text>Question: {question}</Text>
-    <Answers answers={answers} />
+    <TextComponent fontSize="basePlus">Question: {question}</TextComponent>
+    <ChoiceList answers={answers} />
     <Button>Save Button</Button>
   </QuestionWrapper>
 );
 
 Question.propTypes = {
-  // groupName: PropTypes.string.isRequired,
   question: PropTypes.string.isRequired,
-  answers: PropTypes.arrayOf(PropTypes.shape({
-    content: PropTypes.string,
-    percentage: PropTypes.string,
-  }),).isRequired
+  answers: PropTypes.arrayOf(
+    PropTypes.shape({
+      choices: PropTypes.string,
+      percentage: PropTypes.string
+    })
+  ).isRequired
 };
 
 export default Question;

@@ -1,41 +1,22 @@
-import { useEffect } from 'react';
-import getAllQuestions from '<pages>/QuestionList/DataProvider/api/client';
 import QuestionSummaries from '<components>/QuestionSummaries';
+import TextComponent from '<components>/Text';
+import styled, { css } from 'styled-components';
+import useFetchQuestions from '<pages>/QuestionList/DataProvider/hooks/useFetchQuestions';
 
-const questions = [
-  { content: 'Benny', publishedAt: 322, numberOfChoices: '40' },
-  { content: 'Bin', publishedAt: 322, numberOfChoices: '30' },
-  { content: 'Fry', publishedAt: 32, numberOfChoices: '34' }
-  ,{ content: 'Benny', publishedAt: 322, numberOfChoices: '40' },
-  { content: 'Bin', publishedAt: 322, numberOfChoices: '30' },
-  { content: 'Fry', publishedAt: 32, numberOfChoices: '34' }
-  ,{ content: 'Benny', publishedAt: 322, numberOfChoices: '40' },
-  { content: 'Bin', publishedAt: 322, numberOfChoices: '30' },
-  { content: 'Fry', publishedAt: 32, numberOfChoices: '34' }
-  ,{ content: 'Benny', publishedAt: 322, numberOfChoices: '40' },
-  { content: 'Bin', publishedAt: 322, numberOfChoices: '30' },
-  { content: 'Fry', publishedAt: 32, numberOfChoices: '34' }
-  ,{ content: 'Benny', publishedAt: 322, numberOfChoices: '40' },
-  { content: 'Bin', publishedAt: 322, numberOfChoices: '30' },
-  { content: 'Fry', publishedAt: 32, numberOfChoices: '34' }
-];
+const QuestionWrapper = styled.div(
+  ({ theme: { space } }) => css`
+    padding: ${space.md};
+  `
+);
 
 const QuestionList = () => {
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      const response = await getAllQuestions();
-
-      console.log({ response });
-    };
-
-    fetchQuestions();
-  }, []);
+  const { items } = useFetchQuestions();
 
   return (
-    <QuestionSummaries
-      questions={questions}
-      // question="Is Benny here ?"
-    />
+    <QuestionWrapper>
+      <TextComponent fontSize="md">Questions</TextComponent>
+      <QuestionSummaries items={items} />
+    </QuestionWrapper>
   );
 };
 
