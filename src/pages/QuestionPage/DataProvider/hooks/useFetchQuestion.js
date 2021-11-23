@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import getQuestion from '<pages>/QuestionPage/DataProvider/api/client';
+import { getQuestion } from '<pages>/QuestionPage/DataProvider/api/client';
 
 const useFetchQuestion = (questionId) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,6 @@ const useFetchQuestion = (questionId) => {
       try {
         const { data } = await getQuestion(questionId);
 
-        console.log(data, '>>>>>>>>>>>>>');
         setItem(data);
         setIsLoading(false);
       } catch (error) {

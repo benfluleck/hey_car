@@ -62,7 +62,7 @@ const Choice = ({ content, isChecked, numberOfVotes, percentage, url, onChange }
       <TextComponent>{content}</TextComponent>
       <StatsContainer>
         <TextComponent>{numberOfVotes} votes</TextComponent>
-        <TextComponent>{percentage}</TextComponent>
+        <TextComponent>{percentage}%</TextComponent>
         <ProgressBar max="100" value={percentage} />
       </StatsContainer>
     </ChoicesContainer>

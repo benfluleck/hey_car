@@ -1,17 +1,34 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const TextBoxWrapper = styled.div`
-  display: flex;
-`;
+const TextBoxWrapper = styled.div(
+  ({ theme: { space } }) => css`
+    display: flex;
+    align-items: center;
+    margin-bottom: ${space.base};
 
-const TextBoxLabel = styled.label``;
+    > label {
+      padding-left: 0px;
+      padding-right: ${space.base};
+    }
+  `
+);
 
-const TextBoxInput = styled.input``;
+const TextBoxLabel = styled.label(
+  ({ theme: { fontSize } }) => css`
+    font-size: ${fontSize.base};
+  `
+);
 
-const TextBox = ({ text, id }) => (
+const TextBoxInput = styled.input(
+  ({ theme: { fontSize } }) => css`
+    font-size: ${fontSize.base};
+  `
+);
+
+const TextBox = ({ text, id, onChange }) => (
   <TextBoxWrapper>
     <TextBoxLabel htmlFor={id}>{text}</TextBoxLabel>
-    <TextBoxInput type="text" id={id} name={id} />
+    <TextBoxInput type="text" id={id} name={id} onChange={onChange} />
   </TextBoxWrapper>
 );
 

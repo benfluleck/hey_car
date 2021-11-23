@@ -10,7 +10,11 @@ const QuestionWrapper = styled.div(
 );
 
 const QuestionList = () => {
-  const { items } = useFetchQuestions();
+  const { items, isLoading } = useFetchQuestions();
+
+  if (isLoading || !items.length) {
+    return <p>Loading......</p>;
+  }
 
   return (
     <QuestionWrapper>
