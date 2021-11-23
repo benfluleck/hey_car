@@ -8,7 +8,9 @@ const ButtonContainer = styled.button(
 );
 
 const Button = ({ onClick, children }) => (
-  <ButtonContainer onClick={onClick}>{children}</ButtonContainer>
+  <ButtonContainer data-testid="button" onClick={onClick}>
+    {children}
+  </ButtonContainer>
 );
 
 Button.defaultProps = {

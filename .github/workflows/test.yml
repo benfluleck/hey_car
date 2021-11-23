@@ -1,0 +1,50 @@
+name: Frontend Tests
+
+on: pull_request
+
+jobs:
+  fe-tests:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Current PR
+        uses: actions/checkout@v2
+
+      - name: Look for file changes
+        uses: technote-space/get-diff-action@v5
+        id: git-diff-frontend
+        with:
+          PATTERNS: |
+            package.json
+            package-lock.json
+            src/**/*.js
+            .github/workflows/test.yml
+      - name: SetUp Node
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '14'
+        if: ${{ env.GIT_DIFF }}
+
+      - name: Cache npm deps
+        id: cache-npm-deps
+        uses: actions/cache@v2.1.6
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v2.1.6
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+      - name: Install Deps
+        if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' && env.GIT_DIFF }}
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test
+        if: ${{ env.GIT_DIFF }}

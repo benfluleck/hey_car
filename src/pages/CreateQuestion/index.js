@@ -27,8 +27,7 @@ const CreateQuestionWrapper = styled.form(
     > button {
       margin-top: ${space.md};
     }
-  }
-`
+  }`
 );
 
 const SubmitWrapper = styled.div`

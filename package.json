@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "@reach/router": "^1.3.4",
+    "babel-jest": "^27.3.1",
     "date-fns": "^2.26.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.3.1",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -20,6 +22,8 @@
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
     "axios": "^0.24.0",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
@@ -29,8 +33,28 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "testEnvironment": "jest-environment-jsdom",
+    "testMatch": [
+      "**/?(*.)(test).js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/helpers/setupTest.js"
+    ],
+    "moduleNameMapper": {
+      "^<pages>/(.*)$": "<rootDir>/src/pages/$1",
+      "^<components>/(.*)$": "<rootDir>/src/components/$1",
+      "^<helpers>/(.*)$": "<rootDir>/src/helpers/$1",
+      "^<variables>/(.*)$": "<rootDir>/src/styles/variables/$1",
+      "^<fixtures>/(.*)$": "<rootDir>/src/fixtures/$1",
+      "^<styles>/(.*)$": "<rootDir>/src/styles/$1"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest src/",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "serve": "webpack serve --mode development",
