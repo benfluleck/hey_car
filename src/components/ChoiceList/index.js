@@ -11,12 +11,12 @@ const ChoicesContainer = styled.div(
   `
 );
 
-const ChoicesList = ({ answers, handleClick }) => {
+const ChoicesList = ({ answers, handleChange }) => {
   const [attributeValue, setAttributeValue] = useState(null);
 
   const onChange = ({ target: { value } }) => {
     setAttributeValue(value);
-    handleClick(value);
+    handleChange(value);
   };
 
   const sum = answers.reduce((acc, curr) => {
@@ -25,19 +25,17 @@ const ChoicesList = ({ answers, handleClick }) => {
 
   return (
     <ChoicesContainer>
-      {answers.map((answer) => {
-        return (
-          <Choice
-            key={answer.url}
-            content={answer.choice}
-            url={answer.url}
-            numberOfVotes={answer.votes}
-            percentage={Math.round((answer.votes / sum) * 100)}
-            onChange={onChange}
-            isChecked={attributeValue === answer.url}
-          />
-        );
-      })}
+      {answers.map((answer) => (
+        <Choice
+          key={answer.url}
+          content={answer.choice}
+          url={answer.url}
+          numberOfVotes={answer.votes}
+          percentage={Math.round((answer.votes / sum) * 100) || 0}
+          onChange={onChange}
+          isChecked={attributeValue === answer.url}
+        />
+      ))}
     </ChoicesContainer>
   );
 };

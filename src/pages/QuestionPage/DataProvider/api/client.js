@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { POLL_API } from '<constants>/api';
 
-const getQuestion = (questionId) =>
-  axios.get(`https://polls.apiblueprint.org/questions/${questionId}`);
+export const getQuestion = (questionId) => axios.get(`${POLL_API}/questions/${questionId}`);
 
-export default getQuestion;
+export const postChoice = (url) => axios.post(`${POLL_API}${url}`);

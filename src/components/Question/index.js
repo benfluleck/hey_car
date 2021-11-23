@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import ChoiceList from '<components>/ChoiceList';
@@ -18,11 +19,14 @@ const QuestionWrapper = styled.div(
   `
 );
 
-const Question = ({ question, answers }) => (
+const Question = ({ question, error, answers, onClick, onChange }) => (
   <QuestionWrapper>
     <TextComponent fontSize="basePlus">Question: {question}</TextComponent>
-    <ChoiceList answers={answers} />
-    <Button>Save Button</Button>
+    <TextComponent fontSize="basePlus" color="red">
+      {error}
+    </TextComponent>
+    <ChoiceList answers={answers} handleChange={onChange} />
+    <Button onClick={onClick}>Save Button</Button>
   </QuestionWrapper>
 );
 
@@ -36,4 +40,4 @@ Question.propTypes = {
   ).isRequired
 };
 
-export default Question;
+export default memo(Question);
