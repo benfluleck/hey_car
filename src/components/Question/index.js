@@ -20,11 +20,13 @@ const QuestionWrapper = styled.div(
 );
 
 const Question = ({ question, error, answers, onClick, onChange }) => (
-  <QuestionWrapper>
+  <QuestionWrapper data-testid="question-component">
     <TextComponent fontSize="basePlus">Question: {question}</TextComponent>
-    <TextComponent fontSize="basePlus" color="red">
-      {error}
-    </TextComponent>
+    {error && (
+      <TextComponent fontSize="basePlus" color="red">
+        {error}
+      </TextComponent>
+    )}
     <ChoiceList answers={answers} handleChange={onChange} />
     <Button onClick={onClick}>Vote</Button>
   </QuestionWrapper>

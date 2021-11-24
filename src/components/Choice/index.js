@@ -57,13 +57,21 @@ const ChoicesContainer = styled.label(
 
 const Choice = ({ content, isChecked, numberOfVotes, percentage, url, onChange }) => (
   <ChoicesWrapper data-testid="choice-component">
-    <input data-testid="radio-choice-component" type="radio" onChange={onChange} name="radio" id={url} checked={isChecked} value={url} />
-    <ChoicesContainer htmlFor={url}>
+    <input
+      data-testid="radio-choice-component"
+      type="radio"
+      onChange={onChange}
+      name="radio"
+      id={url}
+      checked={isChecked}
+      value={url}
+    />
+    <ChoicesContainer data-testid="radio-label" htmlFor={url}>
       <TextComponent>{content}</TextComponent>
       <StatsContainer>
         <TextComponent>{numberOfVotes} votes</TextComponent>
         <TextComponent>{percentage}%</TextComponent>
-        <ProgressBar max="100" value={percentage} />
+        <ProgressBar data-testid="choice-progress" max="100" value={percentage} />
       </StatsContainer>
     </ChoicesContainer>
   </ChoicesWrapper>

@@ -30,7 +30,7 @@ const SummaryWrapper = styled(Link)(
 );
 
 const QuestionSummary = ({ content, url, publishedAt, numberOfChoices }) => (
-  <SummaryWrapper to={url}>
+  <SummaryWrapper data-testid="question-summary" to={url}>
     <TextComponent fontSize="base">{content}</TextComponent>
     <TextComponent fontSize="xsBase">{publishedAt}</TextComponent>
     <TextComponent fontSize="xsBase">Choices: {numberOfChoices}</TextComponent>
