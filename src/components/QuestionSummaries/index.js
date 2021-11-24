@@ -12,7 +12,7 @@ const SummaryGrid = styled.div(
 );
 
 const QuestionSummaries = ({ items }) => (
-  <SummaryGrid>
+  <SummaryGrid data-testid="question-summaries">
     {items.map((item) => (
       <QuestionSummary
         key={item.published_at}
