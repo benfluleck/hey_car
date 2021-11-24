@@ -12,7 +12,7 @@ const TextComponentWrapper = styled.span(
 );
 
 const TextComponent = ({ fontSize, color, children }) => (
-  <TextComponentWrapper color={color} fontSize={fontSize}>
+  <TextComponentWrapper data-testid="text-component" color={color} fontSize={fontSize}>
     {children}
   </TextComponentWrapper>
 );

@@ -26,7 +26,7 @@ const Question = ({ question, error, answers, onClick, onChange }) => (
       {error}
     </TextComponent>
     <ChoiceList answers={answers} handleChange={onChange} />
-    <Button onClick={onClick}>Save Button</Button>
+    <Button onClick={onClick}>Vote</Button>
   </QuestionWrapper>
 );
 

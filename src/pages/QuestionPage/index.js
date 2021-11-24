@@ -33,7 +33,7 @@ const QuestionPage = ({ questionId }) => {
     if (url) {
       const { data } = await postChoice(url);
       const currentChoices = choices.filter((choice) => choice.choice !== data.choice);
-      setChoices([...currentChoices, data]);
+      setChoices([...currentChoices, data].sort((a, b) => b.votes - a.votes));
     } else {
       setError('Please select a choice');
     }
