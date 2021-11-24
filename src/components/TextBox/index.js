@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const TextBoxWrapper = styled.div(
   ({ theme: { space } }) => css`
@@ -26,10 +27,22 @@ const TextBoxInput = styled.input(
 );
 
 const TextBox = ({ text, id, onChange }) => (
-  <TextBoxWrapper>
-    <TextBoxLabel htmlFor={id}>{text}</TextBoxLabel>
-    <TextBoxInput type="text" id={id} name={id} onChange={onChange} />
+  <TextBoxWrapper data-testid="textBox">
+    <TextBoxLabel data-testid="textBoxLabel" htmlFor={id}>
+      {text}
+    </TextBoxLabel>
+    <TextBoxInput data-testid="textBoxInput" type="text" id={id} name={id} onChange={onChange} />
   </TextBoxWrapper>
 );
+
+TextBox.defaultProps = {
+  onChange: () => {}
+};
+
+TextBox.propTypes = {
+  text: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  onChange: PropTypes.func
+};
 
 export default TextBox;

@@ -1,4 +1,4 @@
-import { render, fireEvent, cleanup } from '<helpers>/test-utils';
+import { render, cleanup } from '<helpers>/test-utils';
 import Select from '<components>/Select';
 
 const setup = (props) => {
@@ -10,7 +10,7 @@ const setup = (props) => {
 
   return {
     ...utils,
-    select,
+    select
   };
 };
 
@@ -26,24 +26,22 @@ describe('Component - SelectBox', () => {
   it('should render a label component with a for attribute', async () => {
     const { getByTestId } = setup();
 
-    expect(getByTestId('label-select')).toHaveTextContent('Choose the number of choices for this question')
-    expect(getByTestId('label-select')).toHaveAttribute('for','number-select')
+    expect(getByTestId('label-select')).toHaveTextContent(
+      'Choose the number of choices for this question'
+    );
+    expect(getByTestId('label-select')).toHaveAttribute('for', 'number-select');
   });
 
   it('should render a select component with id of the label component', async () => {
     const { getByTestId } = setup();
 
-    expect(getByTestId('select-html-component')).toHaveAttribute('id','number-select')
-    expect(getByTestId('select-html-component')).toHaveAttribute('name','numbers')
+    expect(getByTestId('select-html-component')).toHaveAttribute('id', 'number-select');
+    expect(getByTestId('select-html-component')).toHaveAttribute('name', 'numbers');
   });
 
   it('should render option components', async () => {
     const { getAllByTestId } = setup();
 
-    expect(getAllByTestId('option-select')).toHaveLength(5)
+    expect(getAllByTestId('option-select')).toHaveLength(5);
   });
-  
-  
-
-
-})
+});

@@ -41,11 +41,11 @@ const ChoicesList = ({ answers, handleChange }) => {
 };
 
 ChoicesList.defaultProps = {
-  handleClick: () => {}
+  handleChange: () => {}
 };
 
 ChoicesList.propTypes = {
-  handleClick: PropTypes.func,
+  handleChange: PropTypes.func,
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string,

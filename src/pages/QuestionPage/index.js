@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import useFetchQuestion from '<pages>/QuestionPage/DataProvider/hooks/useFetchQuestion';
 import Question from '<components>/Question';
 import styled, { css } from 'styled-components';
@@ -53,4 +54,9 @@ const QuestionPage = ({ questionId }) => {
     );
   }
 };
+
+QuestionPage.propTypes = {
+  questionId: PropTypes.string
+};
+
 export default QuestionPage;

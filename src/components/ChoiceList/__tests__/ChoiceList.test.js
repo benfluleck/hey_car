@@ -1,4 +1,4 @@
-import { render, fireEvent, cleanup } from '<helpers>/test-utils';
+import { render, cleanup } from '<helpers>/test-utils';
 import ChoiceList from '<components>/ChoiceList';
 import { answers } from '<fixtures>/index.js';
 
@@ -34,12 +34,6 @@ describe('Component - ChoiceList', () => {
     const { choices } = setup();
 
     expect(choices).toHaveLength(2);
-  });
-
-  it('should render 2 choices', async () => {
-    const { radioButtons } = setup();
-
-    expect(radioButtons).toHaveLength(2);
   });
 
   it('should render 6 text component', async () => {

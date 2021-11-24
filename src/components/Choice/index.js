@@ -79,14 +79,17 @@ const Choice = ({ content, isChecked, numberOfVotes, percentage, url, onChange }
 
 Choice.defaultProps = {
   onChange: () => {},
-  percentage: undefined
+  percentage: undefined,
+  isChecked: false
 };
 
 Choice.propTypes = {
   content: PropTypes.string.isRequired,
   numberOfVotes: PropTypes.number.isRequired,
   percentage: PropTypes.number,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  isChecked: PropTypes.bool,
+  url: PropTypes.string
 };
 
 export default Choice;
