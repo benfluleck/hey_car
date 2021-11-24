@@ -71,7 +71,7 @@ describe('Component - Choice', () => {
     expect(getByTestId('choice-progress')).toHaveAttribute('value', '54');
   });
 
-  it('should render progress bar', async () => {
+  it('should call onChange function', async () => {
     const handleChange = jest.fn();
 
     const { getByTestId } = setup({ onChange: handleChange });

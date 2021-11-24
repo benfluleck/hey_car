@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import ReactDOM from 'react-dom';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 

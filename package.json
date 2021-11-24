@@ -15,7 +15,8 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "webpack-merge": "^5.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -27,6 +28,8 @@
     "axios": "^0.24.0",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-react": "^7.27.1",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.64.1",
@@ -58,8 +61,8 @@
     "test": "jest src/",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
-    "serve": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "serve": "webpack serve --env --mode development ",
+    "build": "webpack --env --mode production"
   },
   "author": "",
   "license": "ISC"

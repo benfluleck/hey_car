@@ -15,8 +15,15 @@ const SelectWrapper = styled.div(
 
 const SelectBox = ({ handleChange }) => (
   <SelectWrapper data-testid="select-component">
-    <label data-testid="label-select" htmlFor="number-select">Choose the number of choices for this question</label>
-    <select data-testid="select-html-component" id="number-select" onChange={handleChange} name="numbers">
+    <label data-testid="label-select" htmlFor="number-select">
+      Choose the number of choices for this question
+    </label>
+    <select
+      data-testid="select-html-component"
+      id="number-select"
+      onChange={handleChange}
+      name="numbers"
+    >
       <option value="">--Please choose an option--</option>
       {[1, 2, 3, 4, 5].map((number) => (
         <option data-testid="option-select" key={number} value={number}>

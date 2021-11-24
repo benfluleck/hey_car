@@ -1,4 +1,4 @@
-import { render, cleanup, screen } from '<helpers>/test-utils';
+import { render, cleanup } from '<helpers>/test-utils';
 import QuestionSummary from '<components>/QuestionSummary';
 import { question } from '<fixtures>/index.js';
 

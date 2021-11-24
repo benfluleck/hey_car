@@ -38,10 +38,12 @@ const QuestionSummary = ({ content, url, publishedAt, numberOfChoices }) => (
 );
 
 QuestionSummary.defaultProps = {
-  numberOfChoices: undefined
+  numberOfChoices: undefined,
+  url: undefined
 };
 
 QuestionSummary.propTypes = {
+  url: PropTypes.string,
   content: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
   numberOfChoices: PropTypes.number

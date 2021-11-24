@@ -32,8 +32,17 @@ const Question = ({ question, error, answers, onClick, onChange }) => (
   </QuestionWrapper>
 );
 
+Question.defaultProps = {
+  onClick: () => {},
+  onChange: () => {},
+  error: null
+};
+
 Question.propTypes = {
   question: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  onClick: PropTypes.func,
+  onChange: PropTypes.func,
   answers: PropTypes.arrayOf(
     PropTypes.shape({
       choices: PropTypes.string,
