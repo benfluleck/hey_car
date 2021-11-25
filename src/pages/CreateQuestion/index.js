@@ -114,7 +114,7 @@ const CreateQuestion = () => {
   };
 
   return (
-    <CreateQuestionWrapper>
+    <CreateQuestionWrapper data-testid="create-question-form">
       <TextComponent fontSize="md">Create Question</TextComponent>
       <TextBox text="Enter A New Question here ?" id="question" onChange={handleTextBoxChange} />
       <SelectBox handleChange={handleChange} />
@@ -122,9 +122,11 @@ const CreateQuestion = () => {
       <ChoicesWrapper>{generateTextBoxes(numberOfTextBoxes, handleInputChange)}</ChoicesWrapper>
 
       <SubmitWrapper>
-        <TextComponent fontSize="basePlus" color="red">
-          {error}
-        </TextComponent>
+        {error && (
+          <TextComponent dataTestId="error-component" fontSize="basePlus" color="red">
+            {error}
+          </TextComponent>
+        )}
         <Button onClick={handleClick}>Save Question</Button>
       </SubmitWrapper>
     </CreateQuestionWrapper>

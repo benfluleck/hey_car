@@ -11,20 +11,22 @@ const TextComponentWrapper = styled.span(
   `
 );
 
-const TextComponent = ({ fontSize, color, children }) => (
-  <TextComponentWrapper data-testid="text-component" color={color} fontSize={fontSize}>
+const TextComponent = ({ fontSize, dataTestId, color, children }) => (
+  <TextComponentWrapper data-testid={dataTestId} color={color} fontSize={fontSize}>
     {children}
   </TextComponentWrapper>
 );
 
 TextComponent.defaultProps = {
-  children: undefined
+  children: undefined,
+  dataTestId: 'text-component'
 };
 
 TextComponent.propTypes = {
   color: PropTypes.string,
   fontSize: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  dataTestId: PropTypes.string
 };
 
 export default TextComponent;
