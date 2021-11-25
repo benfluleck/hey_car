@@ -50,6 +50,7 @@
     ],
     "moduleNameMapper": {
       "^<pages>/(.*)$": "<rootDir>/src/pages/$1",
+      "^<constants>/(.*)$": "<rootDir>/src/constants/$1",
       "^<components>/(.*)$": "<rootDir>/src/components/$1",
       "^<helpers>/(.*)$": "<rootDir>/src/helpers/$1",
       "^<variables>/(.*)$": "<rootDir>/src/styles/variables/$1",

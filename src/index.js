@@ -4,6 +4,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import BaseRoutes from '<pages>/';
 import theme from '<styles>/theme';
+import { OnlineStatusProvider } from '<helpers>/useOnlineStatus';
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -26,22 +27,26 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <BaseRoutes />
+      <OnlineStatusProvider>
+        <BaseRoutes />
+      </OnlineStatusProvider>
     </ThemeProvider>
   );
 };
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
+if (process.env.NODE_ENV === 'production') {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then((registration) => {
+          console.log('SW registered: ', registration);
+        })
+        .catch((registrationError) => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    });
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

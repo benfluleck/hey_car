@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const WorkboxPlugin = require('workbox-webpack-plugin');
 
-module.exports = {
+module.exports = (mode) => ({
   // Where files should be sent once they are bundled
   output: {
     path: path.join(__dirname, './dist'),
@@ -41,6 +42,9 @@ module.exports = {
       title: 'Hey Car Application',
       template: './src/index.html',
       inject: 'body'
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(mode)
     })
   ]
-};
+});
